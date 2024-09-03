@@ -17,13 +17,13 @@ document.querySelector('#submitWorkout').addEventListener('click', displayWorkou
 // Function to add new fitness goals and remove completed ones
 
 const addNewGoal = () => {
-    const goalInput = document.querySelector('#goalInput').value;
+    const goalInput = document.querySelector('#goalInput').value.toLowerCase();
     const goalList = document.querySelector('#goalList');
 
 // Conditional to check if there's duplicate goals
     let goalExists = false
     goalList.querySelectorAll('li').forEach( function(goal) {
-        if (goal.textContent === goalInput) {
+        if (goal.textContent.toLowerCase() === goalInput) {
             goalExists = true 
         }
     })
@@ -32,7 +32,7 @@ const addNewGoal = () => {
         alert("Goal already exists!")
         return
     }
-
+//
     const newGoal = document.createElement('li');
     newGoal.textContent = goalInput;
     goalList.appendChild(newGoal);
